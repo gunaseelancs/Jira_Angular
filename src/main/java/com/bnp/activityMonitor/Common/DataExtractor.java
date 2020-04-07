@@ -7,6 +7,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import org.springframework.stereotype.Service;
+
 import com.atlassian.jira.rest.client.api.JiraRestClient;
 import com.atlassian.jira.rest.client.api.ProjectRestClient;
 import com.atlassian.jira.rest.client.api.UserRestClient;
@@ -17,22 +19,15 @@ import com.atlassian.jira.rest.client.internal.async.AsynchronousJiraRestClientF
 
 import io.atlassian.util.concurrent.Promise;
 
+@Service
 public class DataExtractor {
 	
-	
 
-	public User getJiraDetails() throws URISyntaxException, InterruptedException, ExecutionException {
-		UserRestClient client=getJRC().getUserClient();
-		Promise<User> promuser=client.getUser("460020");
-		User user=promuser.get();
-		return user;
-	}
-
-	private JiraRestClient getJRC() throws URISyntaxException {
+	public JiraRestClient getJRC() throws URISyntaxException {
 
 		AsynchronousJiraRestClientFactory factory = new AsynchronousJiraRestClientFactory();
 		URI baseURI=new URI("https://onlineprogrammer.atlassian.net");
-		JiraRestClient jrc=factory.createWithBasicHttpAuthentication(baseURI, "online.programmer@gmail.com", "Secure@1");
+		JiraRestClient jrc=factory.createWithBasicHttpAuthentication(baseURI, "online.programmer@gmail.com", "hARhkdYLIJRealMDBUBm4654");
 		return jrc;
 	}
 
